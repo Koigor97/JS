@@ -20,6 +20,7 @@ body {
   font-family: 'Press Start 2P', sans-serif;
   color: #eee;
   background-color: var(--bg-color1);
+  height: 100dvh;
 }
 
 .loser {
