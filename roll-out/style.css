@@ -30,6 +30,7 @@ body {
   background-image: url("prime.webp");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,8 +41,9 @@ body {
 /* LAYOUT */
 main {
   position: relative;
+  /* top: 10rem; */
   width: 50rem;
-  height: 80dvh;
+  height: 90dvh;
   background-color: #04322E;
   backdrop-filter: blur(200px);
   filter: blur();
@@ -85,7 +87,7 @@ main {
 #score--1,
 .current-2 {
   position: relative;
-  top: 25rem;
+  top: 10rem;
 }
 
 .player--active {
@@ -163,17 +165,26 @@ main {
 .btn--new {
   /* top: -8rem;
   left: 7rem; */
-  top: -10rem;
+  top: -5rem;
   left: 40%;
 }
 
 .btn--roll {
-  top: 80rem;
+  top: 52rem;
 
 }
 
 .btn--hold {
-  top: 45rem;
+  top: 35rem;
+}
+
+.dice {
+  position: absolute;
+  left: 50%;
+  top: 42rem;
+  transform: translateX(-50%);
+  height: 8rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
 .info:active,
@@ -189,7 +200,7 @@ main {
 .info {
   position: absolute;
   left: 35rem;
-  top: -9.5rem;
+  top: -4.5rem;
   transition: all 0.2s;
 }
 
@@ -197,7 +208,8 @@ main {
   width: 3.5rem;
 }
 
-.info, .close-info {
+.info,
+.close-info {
   background: none;
   border: none;
   cursor: pointer;
@@ -219,7 +231,7 @@ main {
   max-width: 60ch;
   border: 0;
   box-shadow: 0 0 1rem rgb(0 0 0 / .3);
-  visibility:hidden;
+  visibility: hidden;
 
   top: 50%;
   left: 50%;
@@ -238,14 +250,7 @@ main {
   font-style: italic;
 }
 
-.dice {
-  position: absolute;
-  left: 50%;
-  top: 60rem;
-  transform: translateX(-50%);
-  height: 10rem;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
-}
+
 
 .player--winner {
   background-color: #2f2f2f;
@@ -262,7 +267,7 @@ main {
 @media only screen and (min-width: 37.5em) {
 
   main {
-    width: 60rem;
+    width: 70rem;
   }
 
   .score {
@@ -273,16 +278,21 @@ main {
     font-size: 2rem;
   }
 
-  #name--1,
-  #score--1,
-  .current-2 {
-    position: relative;
-    top: 25rem;
+  .btn--roll {
+    top: 44rem;
+    left: 75%;
+  }
+
+  .btn--hold {
+    top: 44rem;
+    left: 25%;
   }
 
   .info {
     left: 40rem;
   }
+
+
 }
 
 @media only screen and (min-width: 56.25em) {
@@ -329,7 +339,7 @@ main {
   }
 
   .btn--new {
-    top: -15rem;
+    top: -5rem;
     left: 50%;
   }
 
@@ -341,8 +351,12 @@ main {
     top: 46.1rem;
   }
 
+  .btn--roll, .btn--hold {
+    left: 50%;
+  }
+
   .dice {
-    top: 16.5rem;
+    top: 20rem;
   }
 
 }
