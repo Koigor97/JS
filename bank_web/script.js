@@ -16,8 +16,9 @@ const tabsContents = document.querySelectorAll('.operations__content');
 // Navigations elements
 const nav = document.querySelector('.nav');
 const navigation = document.querySelector('.nav__links');
-
-
+const header = document.querySelector('.header');
+// section elements
+const allSections = document.querySelectorAll('.section');
 
 /////////////////////FUNCTIONS////////////////////
 // Opening and Closing modal function
@@ -92,45 +93,44 @@ const fadeInOut = function(e) {
 navigation.addEventListener('mouseover', fadeInOut.bind(0.5));
 navigation.addEventListener('mouseout', fadeInOut.bind(1));
 
-// Scroll event for our sticky navigation
-const Sec1InitialCoords= section1.getBoundingClientRect();
-console.log(Sec1InitialCoords);
-window.addEventListener('scroll', function() {
-  console.log(window.scrollY);
-  if (window.scrollY > Sec1InitialCoords.top) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
+// implementing Scroll event for our sticky navigation
+// using InterSectionObserver API
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function(entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky')
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  rootMargin: `-${navHeight}px`,
+  threshold: 0
+});
+
+headerObserver.observe(header);
+
+// Reveal section animation
+
+const revealSections = function(entries, observer) {
+  const [theEntry] = entries;
+  console.log(theEntry);
+  // using guard clause
+  if (!theEntry.isIntersecting) return;
+  // but if isIntersecting
+  theEntry.target.classList.remove('section--hidden')
+  observer.unobserve(theEntry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSections, {
+  root: null,
+  threshold: 0.15
+});
+
+allSections.forEach(function(sect) {
+  sectionObserver.observe(sect);
+  sect.classList.add('section--hidden')
 })
 // /////////////////////////////////////////
-// console.log(document.documentElement);
-// console.log(document.head);
-// console.log(document.body);
-
-// const header = document.querySelector('.header');
-// const allSection = document.querySelectorAll('.section');
-// const allBtns = document.getElementsByTagName('button');
-// console.log(allBtns);
-// console.log(allSection);
-
-// ////////////////////////////////////////
-// Scrolling effect
-
-
-
-// Event propagation (Capturing and Bubbling)
-// const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-
-// const randomColorGenerator = () => `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`
-
-// console.log(randomColorGenerator());
-
-// document.querySelector('.nav__link').addEventListener('click', function(e) {
-//   this.style.backgroundColor = randomColorGenerator()
-// })
-
-// document.querySelector('.nav__links').addEventListener('click', function(e) {
-//   this.style.backgroundColor = randomColorGenerator()
-// })
-
-// document.querySelector('.nav').addEventListener('click', function(e) {
-//   this.style.backgroundColor = randomColorGenerator()
-// })
