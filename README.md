@@ -1,4 +1,4 @@
-# JavaScript
+# ![JavaScript icon](favicon-32x32.png) JavaScript
 This repository is for the different JS projects I will be building as I learn the programming language.  
 **❗️NOTE:** Most of the projects in this repository is not mine (meaning I didn't design it. The HTML and CSS). The projects are from the Udemy course by  *__Jonas Schmedtmann__* JavaScript course. However, the table below lists the projects and it author.  
 
