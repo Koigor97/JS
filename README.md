@@ -10,7 +10,7 @@ ___
 |      Project      | Difficulty Level | Completed | Author | Responsive |
 |:-----------------:|:----------------:|:---------:|:-------:|:------------:|
 |   G‍uess The Number❓    |     Beginner     |     ✅     | Jonas Schmedtmann | ✅ |
-|  Bankist-Minimalist Banking 💸  |   Intermediate   |     ✅     | Jonas Schmedtmann | ❌ |
+|  Bankist-Minimalist Banking 💸  |   Intermediate   |     ✅     | Jonas Schmedtmann | ✅ |
 |   Bankist landing page 💸 |   Intermediate   |     ✅     | Jonas Schmedtmann | ❌ |
 |                   |                  |           |
 
