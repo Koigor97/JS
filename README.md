@@ -138,7 +138,6 @@ sarah.calculateAge()
 ```
 
 ___
-<div style="background-color: #E8FFCE; color: #6C3428; padding: 2rem">
 
 ### **<span style="color:FD8D14">Note:</span>**
 * #### Classes are just "syntactic sugar" over Constructor functions
@@ -146,4 +145,6 @@ ___
 * #### Classes are first-class citizens
 * #### Classes are excuted in strict mode
 
-</div>
+___
+
+## Mapty // Map your workouts
