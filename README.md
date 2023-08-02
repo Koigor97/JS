@@ -12,8 +12,9 @@ ___
 |      Project      | Difficulty Level | Completed | Author | Responsive |
 |:-----------------:|:----------------:|:---------:|:-------:|:------------:|
 |   G‍uess The Number❓    |     Beginner     |     ✅     | Jonas Schmedtmann | ✅ |
-|  Bankist-Minimalist Banking 💸  |   Intermediate   |     ✅     | Jonas Schmedtmann | ✅ |
+|  Bankist-Minimalist Banking 💸  |   Intermediate   |     ✅     | Jonas Schmedtmann | ❗️ |
 |   Bankist landing page 💸 |   Intermediate   |     ✅     | Jonas Schmedtmann | ❌ |
+| Mapty  | Intermediate | ✅ | Jonas Schmedtmann | ❌ |
 |                   |                  |           |
 
 ___
@@ -65,6 +66,7 @@ ___
  However, I have come to know that JavaScript do it differently. In JS, the word is **<span style="color:#0ea5e9">PROTOTYPE</span>**. Any Object instantiated that is link to a certain prototype inherits the properties and methods found in the prototype. And yes, it not like the regular Inheritance, but rather, it is called Prototypal Inheritance 😀. To make it more fun, there 3 ways to implement OOP in JS: **<span style="color:#0ea5e9">Constructor Functions</span>**(which actually not a feature of JavaScript, but rather a pattern implemented by prgrammers), **<span style="color:#0ea5e9">ES6 Classes</span>**(which rather a fancy version of constructor function that use the <span style="color:#0ea5e9">Class</span> keyword for programmers who are use to traditional way of creating classes), **<span style="color:#0ea5e9">Object.create()</span>**. It can get be a challenge to understand but I feel like you stand better chance to comprehend the concept when you really understand the Prototype Chain. I will explain the using the Constructor Function.  
 
 ### **<span style="color:#3b82f6">Constructor Function:</span>**
+
 ```js
 const ElectroCar = function(type, doors, seats) {
    this.type = type,
@@ -97,6 +99,7 @@ console.log(Object.prototype) or copy the code above and console.log(car.__proto
 
 ```
 I will stop talking now JS OOP 🤐.
+
 ### **<span style="color:#3b82f6">ES6 Classes</span>**(the modern way):
 
 ```js
@@ -140,11 +143,21 @@ sarah.calculateAge()
 ___
 
 ### **<span style="color:FD8D14">Note:</span>**
+
 * #### Classes are just "syntactic sugar" over Constructor functions
+
 * #### Classes are NOT hoisted.
+
 * #### Classes are first-class citizens
+
 * #### Classes are excuted in strict mode
 
 ___
 
-## Mapty // Map your workouts
+## Mapty // Map your workouts  
+
+This Mapty app project is by far the best project I have done. It allows you to think like a programmer rather than just writing code. You think about the project from the perspective of the user. What the user wants to achieve with the app, what features are going to make them achieve thier goal. You then think about the architecture of the code. Are there how many classes do you need, methods, logics, any third party API or package, a flowchart. All of these brings to perspective, how you as the developer is going to start and complete the project. The Mapty project made use of ES6 Classes, the Navigator and Local storage APIs. The Leaflet JavaScript Open-source library. In summary, it was a fun project and I learned alot.  
+```Note```: You must click on the map logging a activity.
+
+
+![Mapty App screenshot](images/mapty.png)
