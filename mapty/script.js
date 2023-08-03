@@ -263,12 +263,10 @@ class App {
     //click on the workout description
     _moveToPopup(e) {
         const theWorkout = e.target.closest('.workout');
-        console.log(theWorkout);
 
         if(!theWorkout) return;
 
         const workoutId = this.#workouts.find(theId => theId.id === theWorkout.dataset.id);
-        console.log(workoutId);
 
         this.#map.setView(workoutId.coords, this.#mapZoom, {
             animate: true,
