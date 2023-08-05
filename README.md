@@ -161,3 +161,8 @@ This Mapty app project is by far the best project I have done. It allows you to 
 
 
 ![Mapty App screenshot](images/mapty.png)
+
+___
+## Asynchronous JavaScript
+In this simple project, I learned how to interact with third party APIs using the AJAX (Asynchronous JavaScript and XML).  
+I learned the old way of doing it with XMLHttpRequest(), the modern way with Promises (as in fetch, then, catch and finally), and ES2017 (which we all love) Async/Await. Further went indepth on our asynchronous JavaScript works behind the scenes. Because JavaScript Single thread runtime programming language, all asynchronous tasks runs in the Web API environment (the browser). All this is possible because of the EVENT LOOP. The Event Loop act as a traffic warden. After the various asynchrous tasks are completed, they placed in their respective qeues. The addEventListeners, setTimers etc are put in the Callback Qeue, and the XMLHttpRequest or Fetch or Async/Await are put in the Microtask Qeue. The Microtask qeue as priority of the Callback qeue. This and many more learned. Like how to handle errors from the various way to get data from an API, creating Promises (promisifying) and consuming promises etc.  
