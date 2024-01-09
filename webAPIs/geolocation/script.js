@@ -12,6 +12,10 @@ function curFail(error) {
   console.log(`Error: ${error.code} - ${error.message}`);
 }
 
-const options = {};
+const options = {
+  enableHighAccuracy: true, // Use GPS if possible
+  timeout: 5000, // Time in milliseconds before the error callback is invoked
+  maximumAge: 0, // How long the browser should cache the location
+};
 
 navigator.geolocation.getCurrentPosition(curSuccess, curFail, options);
