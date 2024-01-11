@@ -19,3 +19,4 @@ const options = {
 };
 
 navigator.geolocation.getCurrentPosition(curSuccess, curFail, options);
+console.log(navigator.geolocation);
