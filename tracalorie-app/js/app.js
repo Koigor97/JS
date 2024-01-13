@@ -139,16 +139,77 @@ class Workout {
   }
 }
 
-const tracker = new CalorieTracker();
+// creating the App class
+class App {
+  constructor() {
+    this._tracker = new CalorieTracker();
 
-const breakfast = new Meal("Breakfast", 700);
-const breakfast2 = new Meal("Breakfast", 600);
-tracker.addMeal(breakfast);
-tracker.addMeal(breakfast2);
+    // add event listener to the meal form
+    document
+      .getElementById("meal-form")
+      .addEventListener("submit", this._newMeal.bind(this));
 
-const running = new Workout("Running", 300);
-const running2 = new Workout("Running", 500);
-tracker.addWorkout(running);
-tracker.addWorkout(running2);
+    // add event listener to the workout form
+    document
+      .getElementById("workout-form")
+      .addEventListener("submit", this._newWorkout.bind(this));
+  }
 
-console.log(tracker.displayTracker);
+  _newMeal(e) {
+    e.preventDefault();
+
+    //get the meal name and calories
+    const name = document.getElementById("meal-name");
+    const calories = document.getElementById("meal-calories");
+
+    // // setting a guard clause
+    if (name.value === "" || calories.value === "") {
+      alert("Please fill in all the fields");
+      return;
+    }
+
+    // create a new meal
+    const meal = new Meal(name.value, +calories.value);
+    // // add the meal to the tracker
+    this._tracker.addMeal(meal);
+    // // reset the form
+    name.value = "";
+    calories.value = "";
+
+    // collaspe meal form
+    const collaspeMealForm = document.getElementById("collapse-meal");
+    const bsCollapse = new bootstrap.Collapse(collaspeMealForm, {
+      toggle: true,
+    });
+  }
+
+  _newWorkout(e) {
+    e.preventDefault();
+
+    //get the workout name and calories
+    const name = document.getElementById("workout-name");
+    const calories = document.getElementById("workout-calories");
+
+    // // setting a guard clause
+    if (name.value === "" || calories.value === "") {
+      alert("Please fill in all the fields");
+      return;
+    }
+
+    // create a new workout
+    const workout = new Workout(name.value, +calories.value);
+    // // add the workout to the tracker
+    this._tracker.addWorkout(workout);
+    // // reset the form
+    name.value = "";
+    calories.value = "";
+
+    // collaspe workout form
+    const collaspeWorkoutForm = document.getElementById("collapse-workout");
+    const bsCollapse = new bootstrap.Collapse(collaspeWorkoutForm, {
+      toggle: true,
+    });
+  }
+}
+
+const app = new App();
