@@ -343,6 +343,13 @@ class Storage {
       localStorage.setItem("workouts", JSON.stringify(workouts));
     }
   }
+
+  // clear all items from local storage
+  static clearAll() {
+    localStorage.removeItem("totalCalories");
+    localStorage.removeItem("meals");
+    localStorage.removeItem("workouts");
+  }
 }
 
 // creating the App class
