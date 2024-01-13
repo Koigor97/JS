@@ -36,6 +36,32 @@ class CalorieTracker {
     this.#render();
   }
 
+  removeMeal(id) {
+    const mealIndex = this.#meals.findIndex((meal) => meal.id === id);
+    if (mealIndex !== -1) {
+      const meal = this.#meals[mealIndex];
+      this.#totalCalories -= meal.calories;
+      Storage.setTotalCalories(this.#totalCalories);
+      this.#meals.splice(mealIndex, 1);
+      Storage.deleteMeal(id);
+      this.#render();
+    }
+  }
+
+  removeWorkout(id) {
+    const workoutIndex = this.#workouts.findIndex(
+      (workout) => workout.id === id
+    );
+    if (workoutIndex !== -1) {
+      const workout = this.#workouts[workoutIndex];
+      this.#totalCalories += workout.calories;
+      Storage.setTotalCalories(this.#totalCalories);
+      this.#workouts.splice(workoutIndex, 1);
+      Storage.deleteWorkout(id);
+      this.#render();
+    }
+  }
+
   reset() {
     this.#totalCalories = 0;
     this.#meals = [];
