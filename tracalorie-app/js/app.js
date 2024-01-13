@@ -29,6 +29,36 @@ class CalorieTracker {
     this.#render();
   }
 
+  removeMeal(id) {
+    const mealIndex = this.#meals.findIndex((meal) => meal.id === id);
+    if (mealIndex !== -1) {
+      const meal = this.#meals[mealIndex];
+      this.#totalCalories -= meal.calories;
+      this.#meals.splice(mealIndex, 1);
+      this.#render();
+    }
+  }
+
+  removeWorkout(id) {
+    const workoutIndex = this.#workouts.findIndex(
+      (workout) => workout.id === id
+    );
+    if (workoutIndex !== -1) {
+      const workout = this.#workouts[workoutIndex];
+      this.#totalCalories += workout.calories;
+      this.#workouts.splice(workoutIndex, 1);
+      this.#render();
+    }
+  }
+
+  reset() {
+    this.#claroieLimit = 0;
+    this.#totalCalories = 0;
+    this.#meals = [];
+    this.#workouts = [];
+    this.#render();
+  }
+
   get displayTracker() {
     return {
       claroieLimit: this.#claroieLimit,
@@ -81,7 +111,7 @@ class CalorieTracker {
     caloriesRemainingEl.innerHTML = remaining;
 
     // update the remaining calories color
-    if (remaining <= 0) {
+    if (remaining < 0) {
       caloriesRemainingEl.parentElement.parentElement.classList.remove(
         "bg-light"
       );
@@ -215,6 +245,29 @@ class App {
     document
       .getElementById("workout-form")
       .addEventListener("submit", this._newItem.bind(this, "workout"));
+
+    // deleting a meal or workout item
+    document
+      .getElementById("meal-items")
+      .addEventListener("click", this._deleteItem.bind(this, "meal"));
+
+    document
+      .getElementById("workout-items")
+      .addEventListener("click", this._deleteItem.bind(this, "workout"));
+
+    // filter meals and workouts
+    document
+      .getElementById("filter-meals")
+      .addEventListener("keyup", this._filterItems.bind(this, "meal"));
+
+    document
+      .getElementById("filter-workouts")
+      .addEventListener("keyup", this._filterItems.bind(this, "workout"));
+
+    // reset the tracker
+    document
+      .getElementById("reset")
+      .addEventListener("click", this._reset.bind(this));
   }
 
   _newItem(type, e) {
@@ -250,6 +303,49 @@ class App {
     const bsCollapse = new bootstrap.Collapse(collaspeItemForm, {
       toggle: true,
     });
+  }
+
+  _deleteItem(type, e) {
+    if (
+      e.target.classList.contains("delete") ||
+      e.target.classList.contains("fa-xmark")
+    ) {
+      if (confirm("Are you sure you want to delete this item?")) {
+        const id = e.target.closest(".card").dataset.id;
+        console.log(id);
+        type === "meal"
+          ? this._tracker.removeMeal(id)
+          : this._tracker.removeWorkout(id);
+
+        e.target.closest(".card").remove();
+      }
+    }
+  }
+
+  _filterItems(type, e) {
+    const text = e.target.value.toLowerCase();
+    document.querySelectorAll(`#${type}-items .card`).forEach((item) => {
+      const itemName = item.firstElementChild.firstElementChild.textContent;
+      if (itemName.toLowerCase().indexOf(text) !== -1) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  }
+
+  _reset() {
+    if (confirm("Are you sure you want to reset the tracker?")) {
+      this._tracker.reset();
+
+      // reset the UI
+      document.getElementById("meal-items").innerHTML = "";
+      document.getElementById("workout-items").innerHTML = "";
+
+      // reset filter
+      document.getElementById("filter-meals").value = "";
+      document.getElementById("filter-workouts").value = "";
+    }
   }
 }
 
