@@ -12,7 +12,6 @@ class CalorieTracker {
     this.#displayCaloriesBurned();
     this.#displayCaloriesRemaining();
     this.#displayCaloriesProgress();
-
     // set the limit in the modal
     document.getElementById("limit").value = this.#claroieLimit;
   }
@@ -499,4 +498,5 @@ class App {
   }
 }
 
+// creating an instance of the App class
 const app = new App();
