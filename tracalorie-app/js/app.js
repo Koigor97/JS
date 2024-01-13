@@ -333,6 +333,16 @@ class Storage {
       localStorage.setItem("meals", JSON.stringify(meals));
     }
   }
+
+  // deleting a workout from local storage
+  static deleteWorkout(id) {
+    const workouts = Storage.getWorkouts();
+    const workoutIndex = workouts.findIndex((workout) => workout.id === id);
+    if (workoutIndex !== -1) {
+      workouts.splice(workoutIndex, 1);
+      localStorage.setItem("workouts", JSON.stringify(workouts));
+    }
+  }
 }
 
 // creating the App class
